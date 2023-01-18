@@ -4,7 +4,7 @@ import "./item.css"
 // useState
 
 function Item(props) {
-    const {title, price, detail, img} = props;
+    const {title, price, detail, imgurl} = props;
     
     const [isActive, setItsActive] = useState(false);
 
@@ -15,15 +15,15 @@ function Item(props) {
 
     let classToggleBtn; 
     if ( isActive)
-        classToggleBtn = "item-card_faviconfavorite"
+        classToggleBtn = "item-card_favicon favorite"
     else 
-        classToggleBtn="item-card_favicon"
+        classToggleBtn ="item-card_favicon"
 
     return (
-    <div>
+    <div className='item-card'>
         <button className={classToggleBtn} onClick={handleClick} > ♥ </button>
         <div>
-            <img width="180px" src={img}  alt="imagen" />
+            <img width="180px" src={imgurl}  alt="imagen" />
         </div>
         <h3> {title} </h3>
         <h4> $ {price} </h4>

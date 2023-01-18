@@ -1,35 +1,21 @@
-import React, { useState } from 'react'
-import {ButtonChild} from "../button/Button"
+import React, { useState, useEffect } from "react";
+import getItems from "../../services/mockAsyncService";
+import ItemList from "../ItemList/ItemList";
 
-function ItemListContainer(props) {
-    const {title, price, detail, img} = props;
+function ItemListContainer() {
+    const [products, setProducts] = useState([]);
+
+    useEffect( () => {
+    getItems().then((respuesta) => {
+        console.log(respuesta);
+        setProducts(respuesta);
+    });
+    }, [])
     
-    const [isActive, setItsActive] = useState(false);
-
-    const handleClick = () => {
-        console.log("click btn")
-        setItsActive (!isActive) 
-    }
-
-    let classToggleBtn; 
-    if ( isActive)
-        classToggleBtn = "item-card_faviconfavorite"
-    else 
-        classToggleBtn="item-card_favicon"
-
     return (
-    <div>
-        <button className={classToggleBtn} onClick={handleClick} > ♥ </button>
-        <div>
-            <img width="180px" src={img}  alt="imagen" />
-        </div>
-        <h3> {title} </h3>
-        <h4> $ {price} </h4>
-        <p>{detail}</p>
-        <ButtonChild> Ver detalle</ButtonChild>
-    </div>
-    )
+        <>
+            <ItemList products= {products} />
+        </>
+    );
 }
-
-
-export default ItemListContainer
+export default ItemListContainer;
