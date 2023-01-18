@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
-import getItems from "../../services/mockAsyncService";
+import getItems, { getItemsByCategory } from "../../services/mockAsyncService";
 import ItemList from "../ItemList/ItemList";
 
 function ItemListContainer() {
     const [products, setProducts] = useState([]);
+    let idcategory = undefined
+
+
+
 
     useEffect( () => {
-    getItems().then((respuesta) => {
-        console.log(respuesta);
-        setProducts(respuesta);
-    });
+        if (idcategory){
+            getItemsByCategory(idcategory).then((respuesta) => {
+                console.log(respuesta);
+                setProducts(respuesta);
+            });
+        }
+        else{
+            getItems().then((respuesta) => {
+                console.log(respuesta);
+                setProducts(respuesta);
+            });
+        }
     }, [])
     
     return (
@@ -18,4 +30,5 @@ function ItemListContainer() {
         </>
     );
 }
+
 export default ItemListContainer;
