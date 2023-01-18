@@ -17,7 +17,7 @@ function ItemDetailContainer() {
         setProduct(respuesta);
         })
         .catch((error) => alert(`Error: ${error}`));
-    }, []);
+    }, [itemid]);
 
     return (
     <div className="card-detail_main">

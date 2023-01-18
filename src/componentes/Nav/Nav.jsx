@@ -10,13 +10,13 @@ function Nav() {
         </div>
         <div className="nav-enlaces">
             <ul>
-                <Link to="/category/ropa">Ropa</Link>
+                <Link to={"/category/ropa"}>Ropa</Link>
             </ul>
             <ul>
-                <Link to="/category/zapatillas">Zapatillas</Link>
+                <Link to={"/category/zapatillas"}>Zapatillas</Link>
             </ul>
             <ul>
-                <Link to="/category/pelotas">Pelotas</Link>
+                <Link to={"/category/pelotas"}>Pelotas</Link>
             </ul>
         </div>
         <div className="nav-carrito"> 
